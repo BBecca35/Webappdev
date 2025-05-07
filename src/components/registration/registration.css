@@ -3,6 +3,14 @@ body{
     margin: 0;
     padding: 0;
     min-width: 50%;
+    min-height: 400px;
+}
+
+.registration{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .registration-container{
@@ -12,8 +20,8 @@ body{
     position: relative;
     margin-left: 33%;
     margin-top: 150px;
-    width: 33%;
-    height: 400px;
+    width: 507px;
+    height: 100%;
     border-radius: 40px;
     
 }
@@ -22,15 +30,16 @@ body{
     color: #7134C7;
     font-size: 40px;
     position: relative;
-    text-align: center;
+    text-align: center;  
     margin-top: 40px;
 }
 
 .input{
-    width: 60%;
-    margin-left: 20%;
+    width: 300px;
+    margin-left: 60px;
     height: 40px;
     margin-bottom: 20px;
+    padding-left: 40px;
     font-size: 20px;
     color: #7134C7;
     border-color: #7134C7;
@@ -41,11 +50,32 @@ body{
 .submit-button{
     width: fit-content;
     padding: 10px 20px;
-    margin-left: 38%;
+    margin-left: 180px;
     font-size: 20px;
     color: white;
     background-color: #7134C7;
     cursor: pointer;
     border: none;
     border-radius: 10px;
+    margin-bottom: 40px;
 }
+
+.tooltip{
+    width: 330px;
+    padding: 5px 5px;
+    margin-left: 80px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    text-align: justify;
+    border: 3px solid #7134C7;
+    border-radius: 10px;
+}
+
+.icon{
+    color: #7134C7;
+    position: relative;
+    left: 18.5%;
+    bottom: 4%;
+    
+}
+
