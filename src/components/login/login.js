@@ -1,9 +1,10 @@
 import React from 'react'
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation} from 'react-router-dom';
 import './login.css';
 import Alert from '../alertmessage/alert';
-import axiosInstance from '../../api/axiosInstance';
+import axios from '../../api/axios';
+import useAuth from '../../hooks/useAuth';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 
@@ -12,8 +13,11 @@ const LOGIN_URL = '/api/auth/login';
 export default function Login() {
   const[username, setUsername] = useState(""); 
   const[password, setPassword] = useState("");
+  const{setAuth} = useAuth();
   const[alert, setAlert] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/"
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -27,14 +31,19 @@ export default function Login() {
     }
 
     try{
-      const response = await axiosInstance.post(LOGIN_URL, 
+      const response = await axios.post(LOGIN_URL, 
         JSON.stringify({username, password}),
         {
           headers: {'Content-Type' : 'application/json'}
         }
       );
 
-      showAlert("Sikeres bejelentkezés", "success");
+      const accessToken = response.data.accessToken;
+      const role = response.data.role;
+      setAuth({username, role, accessToken});
+      setUsername("");
+      setPassword("");
+      navigate(from, { replace: true});
     }catch(error){
       if(error.response){
         const {status} = error.response;

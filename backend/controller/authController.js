@@ -34,13 +34,21 @@ const login = async (req, res) => {
       return res.status(401).json({ error: "Hibás felhasználónév vagy jelszó!" });
     }
 
-    const token = jwt.sign(
-      { id: user.id, username: user.username },
+    const acceesToken = jwt.sign(
+      { id: user.id, username: user.username, role: "user" },
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
 
-    res.status(200).json({ message: "Sikeres bejelentkezés!", token });
+    const refreshToken = jwt.sign(
+      { username: user.username },
+      process.env.REFRESH_TOKEN_SECRET,
+      { expiresIn: "1d" }
+    );
+
+    res.cookie('jwt', refreshToken, { httpOnly: true, secure: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000});
+
+    res.status(200).json({ message: "Sikeres bejelentkezés!", acceesToken });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "A Bejelentkezés sikertelen!" });

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './registration.css';
 import Alert from '../alertmessage/alert';
-import axiosInstance from '../../api/axiosInstance';
+import axios from '../../api/axios';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock, faReply } from '@fortawesome/free-solid-svg-icons';
 
@@ -86,13 +86,13 @@ export default function Registration() {
     }
 
     try{
-      const response = await axiosInstance.post(REGISTER_URL, 
+      const response = await axios.post(REGISTER_URL, 
         JSON.stringify({username, password}),
         {
           headers: {'Content-Type' : 'application/json'}
         }
       );
-
+      navigate("/login");
       showAlert("Sikeres regisztráció!", "success");
     }catch(error){
       if(error.response){
