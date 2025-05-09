@@ -1,12 +1,13 @@
 import React from 'react'
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './registration.css';
 import Alert from '../alertmessage/alert';
 import axiosInstance from '../../api/axiosInstance';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faLock, faReply } from '@fortawesome/free-solid-svg-icons';
 
-const REGISTER_URL = '/register';
+const REGISTER_URL = '/api/auth/register';
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
@@ -17,8 +18,9 @@ export default function Registration() {
   const[wrongUsername, setWrongUsername] = useState(false);
   const[wrongPassword, setWrongPassword] = useState(false);
   const[twoPasswordnotequals, setTwoPasswordnotequals] = useState(false);
-  const [activeTooltip, setActiveTooltip] = useState(null);
-  const [alert, setAlert] = useState(null);
+  const[activeTooltip, setActiveTooltip] = useState(null);
+  const[alert, setAlert] = useState(null);
+  const navigate = useNavigate();
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -91,11 +93,26 @@ export default function Registration() {
         }
       );
 
-      showAlert("Sikeres Regisztráció!");
+      showAlert("Sikeres regisztráció!", "success");
     }catch(error){
-      console.error(error);
+      if(error.response){
+        const { status } = error.response;
+        if(status === 400){
+          showAlert("A felhasználónév foglalt!", "error");
+        }
+        else{
+          showAlert("Hiba történt a regisztráció során!", "error");
+        }
+      }
+      else{
+        showAlert("Váratlan hiba történt!", "error");
+      }
     }
 
+  }
+
+  const handleNavigate = () => {
+    navigate("/login");
   }
 
   return (
@@ -110,8 +127,11 @@ export default function Registration() {
       )}
 
       <div className='registration-container'>
+        <button className='back-button' onClick={handleNavigate}>
+          <FontAwesomeIcon icon={faReply} size='3x' color='#7134C7'/>
+        </button>
         <h1 className='registration-title'>Regisztráció</h1>
-        <div className='username-input'>
+        <div className='field'>
           <FontAwesomeIcon
             className='icon'
             icon={faUser}
@@ -130,7 +150,7 @@ export default function Registration() {
             </div>
           )}
         </div>
-        <div className='password-input'>
+        <div className='field'>
           <FontAwesomeIcon
             className='icon'
             icon={faLock}
@@ -149,7 +169,7 @@ export default function Registration() {
             </div>
           )}
         </div>
-        <div className='password-again-input'>
+        <div className='field'>
           <FontAwesomeIcon
             className='icon'
             icon={faLock}

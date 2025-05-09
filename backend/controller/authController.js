@@ -6,12 +6,17 @@ const register = async (req, res) => {
   const { username, password } = req.body;
 
   try {
+    const existingUser = await findUserByUsername(username);
+    if (existingUser) {
+      res.status(400).json({ error: "A felhasználónév már foglalt!" });
+      return;
+    }
     const hashed = await bcrypt.hash(password, 10);
     await createUser(username, hashed);
-    res.status(201).json({ message: "User registered successfully" });
+    res.status(201).json({ message: "Sikeres regisztráció!" });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Registration failed" });
+    res.status(500).json({ error: "A Regisztráció sikertelen!" });
   }
 };
 
@@ -21,12 +26,12 @@ const login = async (req, res) => {
   try {
     const user = await findUserByUsername(username);
     if (!user) {
-      return res.status(401).json({ error: "Hibás felhasználónév vagy jelszó" });
+      return res.status(404).json({ error: "A felhasználó nem létezik!" });
     }
 
     const valid = await bcrypt.compare(password, user.password);
     if (!valid) {
-      return res.status(401).json({ error: "Hibás felhasználónév vagy jelszó" });
+      return res.status(401).json({ error: "Hibás felhasználónév vagy jelszó!" });
     }
 
     const token = jwt.sign(
@@ -35,10 +40,10 @@ const login = async (req, res) => {
       { expiresIn: "1h" }
     );
 
-    res.status(200).json({ message: "Sikeres bejelentkezés", token });
+    res.status(200).json({ message: "Sikeres bejelentkezés!", token });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Bejelentkezés sikertelen" });
+    res.status(500).json({ error: "A Bejelentkezés sikertelen!" });
   }
 };
 
