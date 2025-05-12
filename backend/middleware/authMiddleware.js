@@ -1,17 +1,20 @@
 const jwt = require("jsonwebtoken");
 
 const authenticateToken = (req, res, next) => {
-  const authHeader = req.headers["authorization"];
-  const token = authHeader && authHeader.split(" ")[1];
-
-  if (!token) {
-    return res.status(401).json({ error: "Hiányzó token" });
+  const authHeader = req.headers.authorization || req.authHeader.Authorization;
+  if(!authHeader?.startWith('Bearer ')){
+    return res.sendStatus(401);
   }
+  const token = authHeader.split(' ')[1];
 
-  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-    if (err) return res.status(403).json({ error: "Érvénytelen token" });
+  jwt.verify(token, process.env.JWT_SECRET, (error, user) => {
+    if (error){ 
+      return res.status(403).json({ error: "Érvénytelen token" });
+    }
 
-    req.user = user; // token payload (pl. id, username)
+    req.id = user.UserInfo.id;
+    req.username = user.UserInfo.username;
+    req.role = user.UserInfo.role;
     next();
   });
 };

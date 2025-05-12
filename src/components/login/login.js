@@ -1,8 +1,8 @@
-import React from 'react'
 import { useState } from 'react';
 import { useNavigate, useLocation} from 'react-router-dom';
 import './login.css';
 import Alert from '../alertmessage/alert';
+import { jwtDecode } from "jwt-decode";
 import axios from '../../api/axios';
 import useAuth from '../../hooks/useAuth';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -34,13 +34,18 @@ export default function Login() {
       const response = await axios.post(LOGIN_URL, 
         JSON.stringify({username, password}),
         {
-          headers: {'Content-Type' : 'application/json'}
+          headers: {'Content-Type' : 'application/json'},
+          withCredentials:true
         }
       );
-
-      const accessToken = response.data.accessToken;
-      const role = response.data.role;
-      setAuth({username, role, accessToken});
+      //console.log(response.data);
+      const accessToken = jwtDecode(response.data.accessToken);
+      //console.log(accessToken);
+      const id = accessToken.UserInfo.id;
+      const role = accessToken.UserInfo.role;
+      //console.log(id);
+      //console.log(role);
+      setAuth({id, username, role, accessToken});
       setUsername("");
       setPassword("");
       navigate(from, { replace: true});
@@ -59,6 +64,7 @@ export default function Login() {
       }
       else{
         showAlert("Váratlan hiba történt!", "error");
+        console.log(error);
       }
     }
 
