@@ -1,0 +1,100 @@
+/*
+https://codepen.io/nerdy-girl/pen/pooyRmW?editors=1100
+*/
+
+input[name="volume-slider"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 175px;
+  margin-left: 10px;
+  margin-bottom: -2px;
+  background-color: transparent;
+}
+
+input[name="volume-slider"]:focus {
+  outline-color: #69c1ef;
+}
+
+input[name="volume-slider"]::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 10px;
+  border-radius: 20px;
+  background: #69c1ef;
+}
+
+input[name="volume-slider"]::-moz-range-track {
+  -moz-appearance: none;
+  appearance: none;
+  height: 10px;
+  border-radius: 20px;
+  background: #69c1ef;
+}
+
+input[name="volume-slider"]::-ms-track {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 10px;
+  border-radius: 20px;
+  background: #69c1ef;
+}
+
+input[name="volume-slider"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  border: 3px solid black;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  position: relative;
+  bottom: 8px;
+  background: #69c1ef;
+  background-size: 50%;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.4);
+  cursor: grab;
+}
+
+input[name="volume-slider"]::-webkit-slider-thumb:active {
+  cursor: grabbing;
+}
+
+input[name="volume-slider"]::-moz-range-thumb {
+  -moz-appearance: none;
+  appearance: none;
+  border: 3px solid black;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  position: relative;
+  bottom: 8px;
+  background: #69c1ef;
+  background-size: 50%;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.4);
+  cursor: grab;
+}
+
+input[name="volume-slider"]::-moz-range-thumb:active {
+  cursor: grabbing;
+}
+
+input[name="volume-slider"]::-ms-thumb {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 3px solid black;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  position: relative;
+  bottom: 8px;
+  background: #69c1ef;
+  background-size: 50%;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.4);
+  cursor: grab;
+}
+
+input[name="volume-slider"]::-ms-thumb:active {
+  cursor: grabbing;
+}

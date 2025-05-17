@@ -1,0 +1,51 @@
+.create-playlist-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-back-button{
+    height: 50px;
+    position: absolute;
+    background: none;
+    left: 50px;
+    top: 160px;
+    border: none;
+    cursor: pointer;
+}
+
+.playlist-image{
+    display: flex;
+    width: 200px;
+    height: 200px;
+    margin: 60px auto 40px auto;
+}
+
+.playlist-name-input{
+    position: relative;
+    background: none;
+    width: 300px;
+    height: 40px;
+    font-size: 20px;
+    color: #7134C7;
+    padding-left: 10px;
+    margin: 0 auto 10px auto;
+    border: 2px solid #7134C7;
+    border-radius: 10px;
+    outline: none;
+}
+
+.save-playlist-button{
+    position: relative;
+    width: fit-content;
+    font-size: 20px;
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    border-radius: 10px;
+    padding: 0 20px;
+    background-color: #7134C7;
+    color: #2b2b2b;
+    cursor: pointer;
+}
+

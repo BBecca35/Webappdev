@@ -1,0 +1,26 @@
+.playlist-row{
+    display: flex;
+    flex-direction: row;
+    margin-left: none;
+    height: 45px;
+    margin-bottom: 10px;
+    padding: 0;
+    cursor: pointer;
+    background: none;
+    border:none;
+}
+
+.row-playlist-image{
+    width: 45px;
+    height: 45px;
+    margin-right: 10px;
+}
+
+.row-playlist-name{
+    font-size: 30px;
+    height: fit-content;
+    margin-top: 5px;
+    color: #7134C7;
+}
+
+

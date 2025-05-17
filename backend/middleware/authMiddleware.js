@@ -1,8 +1,8 @@
 const jwt = require("jsonwebtoken");
 
 const authenticateToken = (req, res, next) => {
-  const authHeader = req.headers.authorization || req.authHeader.Authorization;
-  if(!authHeader?.startWith('Bearer ')){
+  const authHeader = req.headers['authorization'];
+  if(!authHeader?.startsWith('Bearer ')){
     return res.sendStatus(401);
   }
   const token = authHeader.split(' ')[1];
@@ -11,6 +11,7 @@ const authenticateToken = (req, res, next) => {
     if (error){ 
       return res.status(403).json({ error: "Érvénytelen token" });
     }
+    //console.log("JWT payload:", user);
 
     req.id = user.UserInfo.id;
     req.username = user.UserInfo.username;

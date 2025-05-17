@@ -1,0 +1,95 @@
+.music-player{
+    display: flex;
+    height: 80px;
+}
+
+.volume-control{
+    padding-top: 25px;
+    margin-left: auto;
+    margin-right: 30px;
+    width: 250px;
+}
+
+.controls{
+    margin-left: 70px;
+    width: 600px;
+}
+
+.current-time{
+    position: relative;
+    color: #f4a3d5;
+    top: -12px;
+    right: 5px;
+}
+
+.duration{
+    position: relative;
+    color: #69c1ef;
+    top: -12px;
+    left: 10px;
+}
+
+.backward-button{
+    height: 30px;
+    padding-left: 7px;
+    padding-right: 10px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f4a3d5;
+}
+
+.play-pause-button{
+    height: 30px;
+    width: 40px;
+    padding-left: 10px;
+    padding-right: 7px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f4a3d5;
+}
+
+.forward-button{
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 7px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f4a3d5;
+}
+
+.artist-image{
+    width: 60px;
+    height: 60px;
+    margin-left: 10px;
+    margin-top: 11px;
+
+}
+
+.current-song-title{
+    width: 300px;
+    height: 80px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.current-artist{
+    margin-top: 12px;
+    margin-bottom: 5px;
+    text-align: left;
+    font-size: 20px;
+    color: #7134c7;
+}
+
+.current-title{
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: left;
+    font-size: 20px;
+    color: #7134c7;
+}
+
+
+
+

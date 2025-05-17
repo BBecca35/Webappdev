@@ -1,0 +1,36 @@
+.navbar {
+  display: flex;
+  padding: 10px;
+  background-color: #2b2b2b;
+  height: 40px;
+}
+
+.navbar-title{
+  font-size: 35px;
+  margin-top: -5px;
+  height: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #F4A3D5, #C152BB, #7134C7, #3C53D1, #69C1EF);
+  background-clip: text;             /* szabványos forma */
+  -webkit-background-clip: text;     /* WebKit-specifikus */
+  -webkit-text-fill-color: transparent;
+  color: transparent;     
+
+}
+
+.logout-button {
+  background-color: #7134C7;
+  color: #2b2b2b;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  margin-left: auto;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.logout-button:hover {
+  background-color: #C152BB;
+}

@@ -13,7 +13,7 @@ const LOGIN_URL = '/api/auth/login';
 export default function Login() {
   const[username, setUsername] = useState(""); 
   const[password, setPassword] = useState("");
-  const{setAuth} = useAuth();
+  const{setAuth, auth} = useAuth();
   const[alert, setAlert] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
@@ -38,17 +38,21 @@ export default function Login() {
           withCredentials:true
         }
       );
-      //console.log(response.data);
+
       const accessToken = jwtDecode(response.data.accessToken);
-      //console.log(accessToken);
-      const id = accessToken.UserInfo.id;
+      const userId = accessToken.UserInfo.id;
       const role = accessToken.UserInfo.role;
-      //console.log(id);
-      //console.log(role);
-      setAuth({id, username, role, accessToken});
+      setAuth({accessToken: response.data.accessToken, UserInfo: {
+        id: userId,
+        username: username,
+        role: role
+      }});
+      localStorage.setItem("auth", JSON.stringify({ userId, username, role, accessToken }));
+      //console.log(auth.UserInfo.id);
       setUsername("");
       setPassword("");
       navigate(from, { replace: true});
+      
     }catch(error){
       if(error.response){
         const {status} = error.response;

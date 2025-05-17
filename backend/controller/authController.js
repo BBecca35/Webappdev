@@ -42,16 +42,16 @@ const login = async (req, res) => {
         }
       },
       process.env.JWT_SECRET,
-      { expiresIn: "1h" }
+      { expiresIn: "1d" }
     );
 
     const refreshToken = jwt.sign(
       { username: user.username },
       process.env.REFRESH_TOKEN_SECRET,
-      { expiresIn: "1d" }
+      { expiresIn: "14d" }
     );
 
-    res.cookie('jwt', refreshToken, { httpOnly: true, secure: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000});
+    res.cookie('jwt', refreshToken, { httpOnly: true, secure: false, sameSite: 'Lax', maxAge: 24 * 60 * 60 * 1000});
 
     res.status(200).json({ message: "Sikeres bejelentkezés!", accessToken: accessToken });
   } catch (err) {

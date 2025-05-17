@@ -1,0 +1,115 @@
+.upload-song-container{
+    margin-top: 15px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 380px;
+}
+
+.display-playlist{
+    position: relative;
+    width: 33%;
+    padding-top: 70px;
+}
+
+.display-playlist-image{
+    width: 200px;
+    height: 200px;
+}
+
+.display-playlist-name{
+    color: #7134C7;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.upload-input-fields{
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    padding-top: 70px;
+}
+
+.song-input{
+    border: 3px solid #7134C7;
+    color: #7134C7;
+    border-radius: 10px;
+    padding-left: 10px;
+    background: none;
+    width: 300px;
+    height: 40px;
+    font-size: 20px;
+    margin: 0 auto 20px auto;
+}
+
+.file-uploader-container{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 70px auto 0 auto;
+    width: 310px;
+    height: fit-content;
+    border: 3px solid #7134C7;
+    border-radius: 10px;
+}
+
+.song-uploader{
+    display: inline-block;
+    padding: 0 7px;
+    line-height: 40px;
+    color: #2b2b2b;
+    font-size: 20px;
+    background-color: #7134C7;
+    cursor: pointer;
+}
+
+.file-name-display{
+    margin-top: 10px;
+    font-size: 16px;
+    color: #7134C7;
+    text-align: center;
+}
+
+.file-uploader{
+    display: none;
+}
+
+.upload-submission{
+    position: relative;
+    width: fit-content;
+    font-size: 20px;
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    border-radius: 10px;
+    padding: 0 20px;
+    background-color: #7134C7;
+    color: #2b2b2b;
+    cursor: pointer;
+}
+
+.response-message{
+    background: #7134C7;
+    color: #2b2b2b;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 10px 10px;
+    align-items: center;
+    text-align: left;
+}
+
+.upload-form-back-button{
+    height: 50px;
+    position: absolute;
+    background: none;
+    left: 5px;
+    top: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+

@@ -15,15 +15,15 @@ const handleTokenRefresh = (req, res) => {
     const accessToken = jwt.sign(
       { "UserInfo" : {
           "id": user.id,
-          "usename": user.username,
+          "username": user.username,
           "role": user.role
         }
       },
       process.env.JWT_SECRET,
-      { expiresIn: "1h" }
+      { expiresIn: "1d" }
     );
 
-    res.json({ role, accessToken });
+    res.json({ accessToken: accessToken });
   });
 };
 

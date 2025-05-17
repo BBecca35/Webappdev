@@ -6,7 +6,7 @@
 }
 
 .registration-container{
-    background-color: white;
+    background-color: #2b2b2b;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -57,7 +57,7 @@
     padding-left: 40px;
     font-size: 20px;
     color: #7134C7;
-    border-color: #7134C7;
+    border: 2px solid #7134C7;
     border-radius: 10px;
     outline: none;
 }
@@ -70,6 +70,7 @@
     margin-bottom: 10px;
     text-align: justify;
     border: 3px solid #7134C7;
+    color: #7134C7;
     border-radius: 10px;
 }
 
@@ -78,7 +79,8 @@
     padding: 10px 20px;
     margin-left: 180px;
     font-size: 20px;
-    color: white;
+    font-weight: bold;
+    color: #2b2b2b;
     background-color: #7134C7;
     cursor: pointer;
     border: none;

@@ -1,0 +1,35 @@
+.song{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.song-number{
+    height: 45px;
+    width: fit-content;
+    padding: 0 10px;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 40px;
+    background: #7134C7;
+    border: none;
+    cursor: pointer;
+    color: #2b2b2b;
+}
+
+.song-name{
+    height: 45px;
+    width: fit-content;
+    color: #7134C7;
+    font-size: 30px;
+    line-height: 40px;
+    margin-left: 10px;
+}
+
+.no-song{
+    height: 45px;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #7134C7;
+    font-size: 30px;
+}
